@@ -1,5 +1,8 @@
 <a href="https://www.freepik.com/free-photo/beautiful-elegance-luxury-fashion-green-handbag_1123588.htm#fromView=keyword&page=1&position=34&uuid=4209d1bb-7db8-44c8-91e5-a823591e5af7">Image by mrsiraphol on Freepik</a>
 
+learn:
+Beizer: https://jasper-dev.hashnode.dev/drawing-bezier-curves-and-splines-with-custompaint-flutter; https://protocoderspoint.com/flutter-bezier-curve-shape-using-customclipper-clippath/;https://www.youtube.com/watch?v=8QdLBQhnHAQ&list=TLPQMzExMjIwMjQNQzzU5z43Rw&index=3
+State restoration: https://www.youtube.com/watch?v=5-u5VjPJsNI
 
 Inspiration:
 https://www.behance.net/gallery/200994403/Women-Bags-eCommerce-App-Design?tracking_source=search_projects|bags+ecommerce+app&l=0

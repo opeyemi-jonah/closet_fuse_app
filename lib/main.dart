@@ -1,5 +1,4 @@
 import 'package:closet_fuse_app/pages/welcome_page.dart';
-import 'package:closet_fuse_app/wave_pattern.dart';
 import 'package:flutter/material.dart';
 
 void main() {
