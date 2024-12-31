@@ -1,5 +1,5 @@
+import 'package:closet_fuse_app/wave_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class WelcomePage extends StatelessWidget {
   var deviceHeight;
@@ -12,11 +12,38 @@ class WelcomePage extends StatelessWidget {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
-        child:
-          _wavyBackground()
-        ,
-      ),
+      body: Stack(children: [
+                ClipPath(
+          clipper: BottomToMidBazierCurve(),
+          child: Container(
+            color: Colors.pink[200],
+            height: deviceHeight,
+            width: deviceWidth,
+          ),
+        ),
+        ClipPath(
+          clipper: BazierCurve(),
+          child: Container(
+            color: Colors.pink[200],
+            height: 250,
+            width: deviceWidth,
+          ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            _welcomeWidget(),
+            SizedBox(
+              height: deviceHeight * 0.05,
+            ),
+            _welcomeTextWidget(),
+            _getStartedLayer(),
+          ],
+        ),
+
+      ]),
     );
   }
 
@@ -70,28 +97,14 @@ class WelcomePage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _wavyBackground() {
-    return DecoratedBox(
-      // BoxDecoration takes the image
-      decoration: BoxDecoration(
-        // Image set to background of the body
-        image: DecorationImage(
-            image: AssetImage("assets/images/waaavy.png"), fit: BoxFit.cover),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          _welcomeWidget(),
-          SizedBox(
-            height: deviceHeight * 0.05,
-          ),
-          _welcomeTextWidget(),
-          _getStartedLayer(),
-        ],
-      ),
-    );
-  }
 }
+
+
+//  ClipPath(
+//               clipper: BazierCurve(),
+//               child: Container(
+//                 color: Colors.pinkAccent,
+//                 height: 500,
+//                 width: 500,
+//               ),
+//             ),

@@ -1,50 +1,61 @@
 import 'package:flutter/material.dart';
 
-class topWave extends CustomClipper<Path>{
- @override
+class BazierCurve extends CustomClipper<Path>{
+  @override
   Path getClip(Size size) {
     Path path = Path();
-    final double _xScaling = size.width / 414;
-    final double _yScaling = size.height / 896;
-    path.lineTo(-720 * _xScaling,-144 * _yScaling);
-    path.cubicTo(-720 * _xScaling,-144 * _yScaling,-680 * _xScaling,-144 * _yScaling,-680 * _xScaling,-144 * _yScaling,);
-    path.cubicTo(-640 * _xScaling,-144 * _yScaling,-560 * _xScaling,-144 * _yScaling,-480 * _xScaling,-128 * _yScaling,);
-    path.cubicTo(-400 * _xScaling,-112 * _yScaling,-320 * _xScaling,-80 * _yScaling,-240 * _xScaling,-37.30000000000001 * _yScaling,);
-    path.cubicTo(-160 * _xScaling,5 * _yScaling,-80 * _xScaling,59 * _yScaling,0 * _xScaling,64 * _yScaling,);
-    path.cubicTo(80 * _xScaling,69 * _yScaling,160 * _xScaling,27 * _yScaling,240 * _xScaling,-10.699999999999989 * _yScaling,);
-    path.cubicTo(320 * _xScaling,-48 * _yScaling,400 * _xScaling,-80 * _yScaling,480 * _xScaling,-69.3 * _yScaling,);
-    path.cubicTo(560 * _xScaling,-59 * _yScaling,640 * _xScaling,-5 * _yScaling,680 * _xScaling,21.30000000000001 * _yScaling,);
-    path.cubicTo(680 * _xScaling,21.30000000000001 * _yScaling,720 * _xScaling,48 * _yScaling,720 * _xScaling,48 * _yScaling,);
-    path.cubicTo(720 * _xScaling,48 * _yScaling,720 * _xScaling,144 * _yScaling,720 * _xScaling,144 * _yScaling,);
-    path.cubicTo(720 * _xScaling,144 * _yScaling,680 * _xScaling,144 * _yScaling,680 * _xScaling,144 * _yScaling,);
-    path.cubicTo(640 * _xScaling,144 * _yScaling,560 * _xScaling,144 * _yScaling,480 * _xScaling,144 * _yScaling,);
-    path.cubicTo(400 * _xScaling,144 * _yScaling,320 * _xScaling,144 * _yScaling,240 * _xScaling,144 * _yScaling,);
-    path.cubicTo(160 * _xScaling,144 * _yScaling,80 * _xScaling,144 * _yScaling,0 * _xScaling,144 * _yScaling,);
-    path.cubicTo(-80 * _xScaling,144 * _yScaling,-160 * _xScaling,144 * _yScaling,-240 * _xScaling,144 * _yScaling,);
-    path.cubicTo(-320 * _xScaling,144 * _yScaling,-400 * _xScaling,144 * _yScaling,-480 * _xScaling,144 * _yScaling,);
-    path.cubicTo(-560 * _xScaling,144 * _yScaling,-640 * _xScaling,144 * _yScaling,-680 * _xScaling,144 * _yScaling,);
-    path.cubicTo(-680 * _xScaling,144 * _yScaling,-720 * _xScaling,144 * _yScaling,-720 * _xScaling,144 * _yScaling,);
-    path.cubicTo(-720 * _xScaling,144 * _yScaling,-720 * _xScaling,-144 * _yScaling,-720 * _xScaling,-144 * _yScaling,);
+
+    path.lineTo(0, size.height * 0.75);
+
+    path.quadraticBezierTo(size.width * 0.25 , size.height * 0.5, size.width * 0.5, size.height * 0.75);
+    
+    path.quadraticBezierTo(size.width * 0.75 , size.height * 1, size.width , size.height * 0.75);
+
+    path.lineTo(size.width, 0);
+
     return path;
   }
-  
+
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
-    throw UnimplementedError();
+    return true;
   }
+
+
 }
 
-class bottomWave extends CustomClipper<Path>{
+
+class BottomToMidBazierCurve extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    // TODO: implement getClip
-    throw UnimplementedError();
+    Path path = Path();
+
+    path.moveTo(0, size.height); // Start at the bottom-left corner
+    path.lineTo(0, size.height * 0.5); // Move up to the middle-left
+
+    // Create a wavy pattern from the middle-left to the middle-right
+    path.quadraticBezierTo(
+      size.width * 0.25,
+      size.height * 0.3, // Raise the wave's peak
+      size.width * 0.5,
+      size.height * 0.5,
+    );
+
+    path.quadraticBezierTo(
+      size.width * 0.75,
+      size.height * 0.7, // Lower the wave's trough
+      size.width,
+      size.height * 0.5,
+    );
+
+    path.lineTo(size.width, size.height); // Connect to the bottom-right corner
+    path.close(); // Close the path
+
+    return path;
   }
-  
+
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
-    throw UnimplementedError();
+    return true;
   }
 }
