@@ -1,4 +1,4 @@
-import 'package:closet_fuse_app/pages/welcome_page.dart';
+import 'package:closet_fuse_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
         home: 
-            WelcomePage(),
+            HomePage(),
         );
   }
 }

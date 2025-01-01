@@ -1,5 +1,7 @@
+import 'package:closet_fuse_app/pages/home_page.dart';
 import 'package:closet_fuse_app/wave_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WelcomePage extends StatelessWidget {
   var deviceHeight;
@@ -25,7 +27,7 @@ class WelcomePage extends StatelessWidget {
           clipper: BazierCurve(),
           child: Container(
             color: Colors.pink[200],
-            height: 250,
+            height: 200,
             width: deviceWidth,
           ),
         ),
@@ -39,7 +41,7 @@ class WelcomePage extends StatelessWidget {
               height: deviceHeight * 0.05,
             ),
             _welcomeTextWidget(),
-            _getStartedLayer(),
+            _getStartedLayer(context),
           ],
         ),
 
@@ -67,7 +69,9 @@ class WelcomePage extends StatelessWidget {
           child: Text(
             welcomeMessage,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+            style: GoogleFonts.varelaRound(
+              textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w300,)
+            ),
           ),
         ),
         SizedBox(
@@ -77,7 +81,7 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  Widget _getStartedLayer() {
+  Widget _getStartedLayer(context) {
     return SizedBox(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -90,7 +94,7 @@ class WelcomePage extends StatelessWidget {
             iconSize: 72,
             icon: const Icon(Icons.arrow_circle_right_outlined),
             onPressed: () {
-              // ...
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
             },
           ),
         ],
